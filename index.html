@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>EECU Budget Calculator</title>
         <script type="module" src="./script.js"></script>
         <link rel="stylesheet" href="style.css">
     </head>
@@ -120,38 +120,39 @@
             <section class="output">
                 <h3>Monthly Budget</h3>
                 <div class="graph"></div>
-                <div class="stats">
+                <div class="stats scrollable">
                     <ul>
-                        <li>
+                        <li id="net-income-bullet">
                             Net Income: <br />
-                            <span class="net-income">62,000</span>
+                            <span class="net-income">000.00</span>
                         </li>
-                        <li>
+                        <li id="taxes-bullet">
                             Taxes <br />
-                            <span class="taxes">15,500</span>
+                            <span class="taxes">000.00</span>
                         </li>
-                        <li>
+                        <li id="student-loans-bullet">
                             Student Loans <br />
-                            <span class="student-loans">15,500</span>
+                            <span class="student-loans">000.00</span>
                         </li>
-                        <li>
+                        <li id="housing-bullet">
                             Housing <br />
                             <span class="housing">000.00</span>
                         </li>
-                        <li>
+                        <li id="essentials-bullet">
                             Essentials <br />
                             <span class="essentials">000.00</span>
                         </li>
-                        <li>
+                        <li id="lifestyle-bullet">
                             Lifestyle <br />
                             <span class="lifestyle">000.00</span>
                         </li>
-                        <li>
+                        <li id="future-proofing-bullet">
                             Future-Proofing <br />
                             <span class="future-proofing">000.00</span>
                         </li>
                     </ul>
                 </div>
+                <img src="../images/down-arrow.png" alt="More content below">
             </section>
         </main>
     </body>

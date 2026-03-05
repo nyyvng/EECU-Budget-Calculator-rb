@@ -1,0 +1,200 @@
+:root {
+    --primary-color: #0054A4;
+    --secondary-color: #E8F3FC;
+    --text-color: #000;
+    --taxes: #535353;
+    --student-loans: #940000;
+    --housing: #1D84AC;
+    --essentials: #3BB255;
+    --lifestyle: #BFB21E;
+    --future-proofing: #6B13B9;
+    --font-family-primary: 'Inter', sans-serif;
+    --font-family-secondary: 'Roboto Condensed', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+}
+
+nav {
+    background-color: #0054A4;
+    width: 100%;
+    height: 180px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    padding: 12px 15px;
+    background-color: #0054A4;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+a:hover {
+    text-decoration: underline;
+    background-color: #075198;
+    transition: 0.3;
+}
+
+h1 {
+    font-size: 40px;
+    margin-left: 90px;
+    margin-top: 50px;
+    margin-bottom: 45px;
+    font-weight: normal;
+}
+
+main {
+    background-color: #E8F3FC;
+    width: math(100% - 140px);
+    height: 600px;
+    padding: 50px 70px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 100px;
+}
+
+.inputs {
+    background-color: white;
+    border-top: 10px solid #0054A4;
+    width: calc(100% * 5/9);
+    height: 500px;
+}
+
+.output {
+    background-color: white;
+    border-top: 10px solid #0054A4;
+    width: calc(100% * 5/18);
+    height: 500px;
+    display: grid;
+    grid-template-areas: "title title"
+                         "graph graph"
+                         "stats arrow";
+    & > h3 {
+        grid-area: title;
+    }
+    & > .graph {
+        grid-area: graph;
+        align-self: center;
+        justify-self: center;
+    }
+    & > .stats {
+        grid-area: stats;
+    }
+     & > .arrow {
+        grid-area: arrow;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+}
+
+.progress {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+
+[class^="visible-page"] {
+    background-color: #E8F3FC;
+    width: 70px;
+    height: 70px;
+    border-radius: 100px;
+    text-align: center;
+    align-content: center;
+    font-size: 36px;
+}
+
+.visible-page-1 {
+    background-color: #0054A4;
+    color: white;
+}
+
+.current-page h3 {
+    margin-left: 105px;
+    font-size: 32px;
+    font-weight: normal;
+}
+
+.output h3 {
+    text-align: center;
+    color: #000;
+    font-family: Inter;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.graph{
+    width: 200px;
+    height: 200px;
+}
+
+.stats ul li {
+    color: #000;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 20px;
+}
+
+#net-income-bullet {
+    list-style: none;
+    margin-top: 0px;
+}
+
+#taxes-bullet {
+    margin-top: 50px;
+}
+
+#taxes-bullet::marker {
+    color: var(--taxes);
+}
+
+#student-loans-bullet::marker {
+    color: var(--student-loans);
+}
+
+#housing-bullet::marker {
+    color: var(--housing);
+}
+
+#essentials-bullet::marker {
+    color: var(--essentials);
+}
+
+#lifestyle-bullet::marker {
+    color: var(--lifestyle);
+}
+
+#future-proofing-bullet::marker {
+    color: var(--future-proofing);
+}
+
+
+.scrollable {
+    width: 300px;
+    height: 200px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    overflow: auto;
+}
+
+.scrollable::-webkit-scrollbar {
+    display: none;
+    width: 0px;
+}
