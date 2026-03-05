@@ -24,9 +24,13 @@
                 <div class="progress">
                     <!--when each page is progressed through, the numbers below must be individually incremented, so that the current page number reflects the first number-->
                     <span class="visible-page-1">1</span>
+                    <div class="line-1"></div>
                     <span class="visible-page-2">2</span>
+                    <div class="line-2"></div>
                     <span class="visible-page-3">3</span>
+                    <div class="line-3"></div>
                     <span class="visible-page-4">4</span>
+                    <div class="line-4"></div>
                     <span class="visible-page-5">5</span>
                 </div>
                 <div class="current-page">
@@ -39,22 +43,23 @@
                 <template class="salary-page">
                     <h3>Salary:</h3>
                     <!--no JS needed to open the dialog here-->
-                    <button command="show-modal" commandfor="search-dialog">
-                        Search
+                    <button class="search-btn" command="show-modal" commandfor="search-dialog">
+                        Search <img src="../images/search.png" alt="Search icon">
                     </button>
                     <!--based on the chosen value of the <select> below, we must update this span to reflect the estimated income value-->
-                    <span class="income"></span>
+                    <span class="income">Gross Income</span>
                     <!--modal to use for searching, could potentially be simplified to a dropdown?-->
                     <dialog closedby="any" id="search-dialog">
                         <select name="jobs" id="job-selector">
                             <option value="web developer">Web Developer</option>
+                            <option value="ethan pua">Ethan Pua</option>
                         </select>
                     </dialog>
                 </template>
                 <template class="student-loan-page">
                     <h3>Student Loan:</h3>
-                    <button command="show-modal" commandfor="search-dialog">
-                        Search
+                    <button class="search-btn" command="show-modal" commandfor="search-dialog">
+                        Search <img src="../images/search.png" alt="Search icon">
                     </button>
                     <span class="student-loans-cost"></span>
                     <dialog closedby="any" id="search-dialog">
@@ -65,8 +70,8 @@
                 </template>
                 <template class="housing-page">
                     <h3>Housing:</h3>
-                    <button command="show-modal" commandfor="search-dialog">
-                        Search
+                    <button class="search-btn" command="show-modal" commandfor="search-dialog">
+                        Search <img src="../images/search.png" alt="Search icon">
                     </button>
                     <span class="housing-cost"></span>
                     <dialog closedby="any" id="search-dialog">
@@ -77,8 +82,8 @@
                 </template>
                 <template class="essentials-page">
                     <h3>Essentials:</h3>
-                    <button command="show-modal" commandfor="search-dialog">
-                        Search
+                    <button class="search-btn" command="show-modal" commandfor="search-dialog">
+                        Search <img src="../images/search.png" alt="Search icon">
                     </button>
                     <span class="essentials-cost"></span>
                     <dialog closedby="any" id="search-dialog">
@@ -89,8 +94,8 @@
                 </template>
                 <template class="lifestyle-page">
                     <h3>Lifestyle:</h3>
-                    <button command="show-modal" commandfor="search-dialog">
-                        Search
+                    <button class="search-btn" command="show-modal" commandfor="search-dialog">
+                        Search <img src="../images/search.png" alt="Search icon">
                     </button>
                     <span class="lifestyle-cost"></span>
                     <dialog closedby="any" id="search-dialog">
@@ -101,8 +106,8 @@
                 </template>
                 <template class="future-proofing-page">
                     <h3>Future-Proofing:</h3>
-                    <button command="show-modal" commandfor="search-dialog">
-                        Search
+                    <button class="search-btn" command="show-modal" commandfor="search-dialog">
+                        Search <img src="../images/search.png" alt="Search icon">
                     </button>
                     <span class="future-proofing-cost"></span>
                     <dialog closedby="any" id="search-dialog">

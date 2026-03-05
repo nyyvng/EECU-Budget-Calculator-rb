@@ -66,11 +66,114 @@ main {
     gap: 100px;
 }
 
+.navigation {
+    justify-self: end;
+    display: flex;
+    justify-content: space-between;
+}
+
 .inputs {
     background-color: white;
     border-top: 10px solid #0054A4;
     width: calc(100% * 5/9);
     height: 500px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+}
+
+.progress {
+    max-width: 81.25%;
+    align-self: auto;
+    display: flex;
+    justify-content: space-around;
+    align-self: center;
+    margin-top: 25px;
+}
+
+[class^="visible-page"] {
+    background-color: #E8F3FC;
+    width: 70px;
+    height: 70px;
+    border-radius: 100px;
+    text-align: center;
+    align-content: center;
+    font-size: 36px;
+}
+
+.visible-page-1 {
+    background-color: #0054A4;
+    color: white;
+}
+
+[class^="line"] {
+    width: 75px;
+    height: 5px;
+    background-color: var(--secondary-color);
+    display: inline-block;
+    align-self: center;
+}
+
+.search-btn {
+    background: #0054A4;
+    margin-left: 75px;
+    color: white;
+    display: flex;
+    width: 214px;
+    height: 50px;
+    padding: 5px 37px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    color: #FFF;
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.current-page {
+    display: grid;
+    grid-template-areas: "title ."
+                         "search value";
+    column-gap: 70px;
+    & h3 {
+        grid-area: title;
+        margin-left: 105px;
+        font-size: 32px;
+        font-weight: normal;
+        margin: 25px 0px 25px 105px;
+    }
+    & .search-btn {
+        grid-area: search;
+    }
+     & span {
+        grid-area: value;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+        display: flex;
+        width: 214px;
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+        background: #E8F3FC;
+        border: 2px solid #0054A4;
+        color: #000;
+        font-size: 24px;
+    }
+}
+
+.output h3 {
+    text-align: center;
+    color: #000;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 
 .output {
@@ -99,43 +202,6 @@ main {
         justify-content: flex-end;
         align-items: center;
     }
-}
-
-.progress {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 25px;
-}
-
-[class^="visible-page"] {
-    background-color: #E8F3FC;
-    width: 70px;
-    height: 70px;
-    border-radius: 100px;
-    text-align: center;
-    align-content: center;
-    font-size: 36px;
-}
-
-.visible-page-1 {
-    background-color: #0054A4;
-    color: white;
-}
-
-.current-page h3 {
-    margin-left: 105px;
-    font-size: 32px;
-    font-weight: normal;
-}
-
-.output h3 {
-    text-align: center;
-    color: #000;
-    font-family: Inter;
-    font-size: 36px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
 }
 
 .graph{
