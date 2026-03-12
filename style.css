@@ -1,6 +1,7 @@
 :root {
     --primary-color: #0054A4;
     --secondary-color: #E8F3FC;
+    --prim-sec-gradient-color: linear-gradient(to right, #0054A4, #E8F3FC);
     --text-color: #000;
     --taxes: #535353;
     --student-loans: #940000;
@@ -120,27 +121,26 @@ main {
 }
 
 
-[class^="line"] {
+[id^="line"] {
     width: 75px;
     height: 5px;
-    background-color: var(--secondary-color);
     display: inline-block;
     align-self: center;
 }
 
 .full {
-    
+    background: var(--primary-color);
 }
 
 .half {
-
+    background: var(--prim-sec-gradient-color);
 }
 
 .none {
-
+    background: var(--secondary-color);
 }
 
-.current-page {
+#current-page {
     display: grid;
     grid-template-areas: "title ."
         "search value";

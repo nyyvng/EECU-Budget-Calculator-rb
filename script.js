@@ -1,12 +1,19 @@
 
-const page_view = document.querySelector('.current-page');
+const page_view = document.getElementById('current-page');
 let current_page_number = 0;
 const templates = [...document.querySelectorAll('template')];
+
+function render_page() {
+    const fragment = templates[current_page_number].content.cloneNode(true);
+    page_view.replaceChildren(fragment);
+}
+render_page()
+
 const nextBtn = document.getElementsByClassName('next');
 const backBtn = document.getElementsByClassName('back');
 const clone = document.importNode(templates[0], true);
 const job_selector = clone.querySelectorAll('#job-selector');
-const grossIncome = document.getElementById('gross-income');
+const grossIncome = page_view.querySelector('#gross-income');
 
 const netIncome = document.getElementById('net-income');
 const taxes = document.getElementById('taxes');
@@ -16,62 +23,84 @@ const essentials = document.getElementById('essentials');
 const lifestyle = document.getElementById('lifestyle');
 const futureProofing = document.getElementById('future-proofing');
 
-function render_page() {
-    const fragment = templates[current_page_number].content.cloneNode(true);
-    page_view.replaceChildren(fragment);
-
-    let number = current_page_number + 1;
-}
 
 function next_page() {
     if (current_page_number >= templates.length - 1) return;
 
     current_page_number++;
+
+    const page = document.getElementById(`visible-page-${current_page_number + 1}`);
+    page.classList.add('blue');
+    page.classList.remove('sky-blue');
+
+    const pageTab = document.getElementById(`line-${current_page_number + 1}`);
+    if (pageTab) {
+        pageTab.classList.add('half');
+        pageTab.classList.remove('none');
+    }
+
+    const pageTabPrior = document.getElementById(`line-${current_page_number}`);
+    pageTabPrior.classList.add('full');
+    pageTabPrior.classList.remove('half');
+
     render_page();
 }
 
 function back_page() {
     if (current_page_number <= 0) return;
 
+    const page = document.getElementById(`visible-page-${current_page_number + 1}`);
+    page.classList.add('sky-blue');
+    page.classList.remove('blue');
+
+    const pageTab = document.getElementById(`line-${current_page_number + 1}`);
+    if (pageTab) {
+        pageTab.classList.add('none');
+        pageTab.classList.remove('half');
+    }
+
+    const pageTabPrior = document.getElementById(`line-${current_page_number}`);
+    pageTabPrior.classList.add('half');
+    pageTabPrior.classList.remove('full');
+
     current_page_number--;
+
     render_page();
 }
-import { fetchJson } from './utility.js';
 
 const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD'
 });
 
-async function init() {
-    const url = 'https://eecu-data-server.vercel.app/data';
+async function careerSelect() {
+    render_page();
+
+
+    const selectElement = page_view.querySelector('#job-selector');
+    const occupationSalaryMap = new Map();
 
     try {
-        const jobs = await fetchJson(url);
-        templates[0].content.querySelector('select')?.append(buildList(jobs));
-    } catch (err) {
-        if (clone) clone.textContent = `Error: ${/** @type {Error} */ (err).message}`;
+        const response = await fetch('https://eecu-data-server.vercel.app/data');
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+        const users = await response.json();
+
+        users.forEach(user => {
+            occupationSalaryMap.set(user["Occupation"], user["Salary"]);
+            const option = new Option(user["Occupation"], user["Occupation"]);
+            selectElement.add(option);
+        });
+
+        selectElement.addEventListener('change', () => {
+            grossIncome.textContent = occupationSalaryMap.get(selectElement.value) || 'Gross Income';
+            console.log(grossIncome.textContent);
+        });
+    } catch (error) {
+        console.error('Error populating user select:', error);
     }
 }
-
-/**
- * @param {any[]} [jobs]
- */
-function buildList(jobs = []) {
-    const frag = document.createElement('section');
-    for (const { Occupation, Salary } of jobs) {
-        const occ = document.createElement('option');
-        occ.classList.add('job-options');
-        occ.innerHTML = Occupation;
-
-        frag.append(occ);
-    }
-    return frag;
-}
-
-await init();
-
-render_page();
+careerSelect();
 
 nextBtn[0].addEventListener('click', next_page);
 backBtn[0].addEventListener('click', back_page);

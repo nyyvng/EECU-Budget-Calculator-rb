@@ -26,19 +26,19 @@
         <section class="inputs">
             <div class="progress">
                 <!--when each page is progressed through, the numbers below must be individually incremented, so that the current page number reflects the first number-->
-                <span class="visible-page-1 blue">1</span>
-                <div class="line-1 half"></div>
-                <span class="visible-page-2 sky-blue">2</span>
-                <div class="line-2 none"></div>
-                <span class="visible-page-3 sky-blue">3</span>
-                <div class="line-3 none"></div>
-                <span class="visible-page-4 sky-blue">4</span>
-                <div class="line-4 none"></div>
-                <span class="visible-page-5 sky-blue">5</span>
-                <div class="line-5 none"></div>
-                <span class="visible-page-6 sky-blue">6</span>
+                <span id="visible-page-1" class="blue">1</span>
+                <div id="line-1" class="half"></div>
+                <span id="visible-page-2" class="sky-blue">2</span>
+                <div id="line-2" class="none"></div>
+                <span id="visible-page-3" class="sky-blue">3</span>
+                <div id="line-3" class="none"></div>
+                <span id="visible-page-4" class="sky-blue">4</span>
+                <div id="line-4" class="none"></div>
+                <span id="visible-page-5" class="sky-blue">5</span>
+                <div id="line-5" class="none"></div>
+                <span id="visible-page-6" class="sky-blue">6</span>
             </div>
-            <div class="current-page">
+            <div id="current-page">
                 <!--the templates below can be appended in here via `template.content.cloneNode(true)` in JS-->
             </div>
             <div class="navigation">
@@ -48,10 +48,10 @@
 
             <template class="salary-page">
                 <h3>Career:</h3>
-                <select name="jobs" id="job-selector" size="1">
+                <select name="jobs" id="job-selector">
                     <option value="select" class="job-options">Select Option</option>
                 </select>
-                <label for="gross-income">$<span id="gross-income">Gross Income</span></label>
+                <label>$<span id="gross-income">Gross Income</span></label>
             </template>
 
             <template class="student-loan-page">
