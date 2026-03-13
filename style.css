@@ -76,7 +76,7 @@ main {
     gap: 150%;
     margin-top: auto;
     margin-bottom: 25px;
-    
+
 }
 
 .inputs {
@@ -163,6 +163,7 @@ main {
         color: #FFF;
         text-align: left;
         font-size: 24px;
+
         & option {
             font-size: 16px;
         }
@@ -183,10 +184,11 @@ main {
         font-size: 24px;
     }
 
-    
+
 }
 
-.back, .next {
+.back,
+.next {
     background: #0054A4;
     color: white;
     display: flex;
@@ -205,15 +207,6 @@ main {
     line-height: normal;
 }
 
-.output h3 {
-    text-align: center;
-    color: #000;
-    font-size: 36px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-
 .output {
     background-color: white;
     border-top: 10px solid #0054A4;
@@ -222,25 +215,33 @@ main {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    gap: auto;
 
     /* grid-template-areas: "title title"
                          "graph graph"
                          "stats arrow"; */
-    &>h3 {
+    & h3 {
+        margin: 20px;
         grid-area: title;
+        text-align: center;
+        color: #000;
+        font-size: 36px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
     }
 
-    &>.graph {
+    & .graph {
         grid-area: graph;
         align-self: center;
         justify-self: center;
     }
 
-    &>.stats {
+    & .stats {
         grid-area: stats;
     }
 
-    &>.arrow {
+    & .arrow {
         grid-area: arrow;
         display: flex;
         justify-content: flex-end;
@@ -251,7 +252,6 @@ main {
 .stats-section {
     display: flex;
     flex-direction: row;
-    margin-top: auto;
     align-self: center;
     align-items: center;
 
@@ -327,4 +327,9 @@ main {
 
 .job-options {
     font-size: 20px;
+}
+
+canvas {
+    width: 250px;
+    height: 250px;
 }

@@ -7,7 +7,7 @@ function render_page() {
     const fragment = templates[current_page_number].content.cloneNode(true);
     page_view.replaceChildren(fragment);
 }
-render_page()
+render_page();
 
 const nextBtn = document.getElementsByClassName('next');
 const backBtn = document.getElementsByClassName('back');
@@ -74,9 +74,6 @@ const formatter = new Intl.NumberFormat('en-US', {
 });
 
 async function careerSelect() {
-    render_page();
-
-
     const selectElement = page_view.querySelector('#job-selector');
     const occupationSalaryMap = new Map();
 
@@ -93,8 +90,9 @@ async function careerSelect() {
         });
 
         selectElement.addEventListener('change', () => {
-            grossIncome.textContent = occupationSalaryMap.get(selectElement.value) || 'Gross Income';
-            console.log(grossIncome.textContent);
+            grossIncome.textContent = formatter.format(occupationSalaryMap.get(selectElement.value)) || 'Gross Income';
+            console.log(parseFloat(grossIncome.textContent));
+            taxCalculator(Number(Intl.NumberFormat(grossIncome.textContent)));
         });
     } catch (error) {
         console.error('Error populating user select:', error);
@@ -104,3 +102,16 @@ careerSelect();
 
 nextBtn[0].addEventListener('click', next_page);
 backBtn[0].addEventListener('click', back_page);
+
+function taxCalculator(money) {
+    let taxTotal = 0;
+    if (money <= 12400) {
+        taxTotal = money * .1;
+    } else if (money <=5040) {
+        taxTotal = (money - 12400) * .12 + 1240;
+    } else {
+        taxTotal = (money - 50400) *.22 + 5800;
+    }
+    taxes.textContent = formatter.format(taxTotal);
+    netIncome.textContent = formatter.format(Number(grossIncome.textContent) - taxTotal);
+};
